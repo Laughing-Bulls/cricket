@@ -2,9 +2,21 @@
 import numpy as np
 import pandas as pd
 
+def read_model(name):
+    path = './model/'
+    df = pd.read_csv(path + name)
+    return df
 
-def predict_score(input1, input2, input3):
+def predict_score(input):
     # Calculates the predicted answer.
-    pred = input1 + input2 + input3
+    model_parameters = read_model("parameters.csv")
+    var = np.zeros((1, 4))
+    print("Predict Score: The Model parameters: ")
+    print(model_parameters)
+    var[0, 1] = model_parameters.iat[0, 1]
+    var[0, 2] = model_parameters.iat[0, 2]
+    var[0, 3] = model_parameters.iat[0, 3]
+    print("Predict Score: The Model weightings: ", var[0, 1], var[0, 2], var[0, 3])
+    pred = input + var
     print('Final Model: The model predicts:', pred)  # Print final answer.
     return pred

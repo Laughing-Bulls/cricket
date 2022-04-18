@@ -5,6 +5,7 @@ import pandas as pd
 
 def transform(df):
     # Transforms the raw data.
-    processed = df  # Transforms the data
-    print('Transform Data: The transformed data is:', processed)  # Print transformed data.
+    processed = df / 2  # Transforms the data
+    print('Transform Data: The transformed data is:')
+    print(processed)  # Print transformed data.
     return processed
