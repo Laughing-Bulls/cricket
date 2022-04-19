@@ -5,7 +5,9 @@ import pandas as pd
 
 def transform(df):
     # Transforms the raw data.
-    processed = df / 2  # Transforms the data
+    print('Transform Data: The raw data headers are:')
+    print(df.columns)
+    df.drop(labels='date', axis=1, inplace=True)  # Transforms the data
     print('Transform Data: The transformed data is:')
-    print(processed)  # Print transformed data.
-    return processed
+    print(df.head())  # Print transformed data.
+    return df
