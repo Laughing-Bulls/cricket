@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Add real data">
+    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add data transformation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transform_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/transform_data.py" afterDir="false" />
@@ -91,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650237865629</updated>
       <workItem from="1650237894102" duration="13173000" />
-      <workItem from="1650402345159" duration="13268000" />
+      <workItem from="1650402345159" duration="15863000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1650248022167</created>
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650405839242</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Task: Add data transformation">
+      <created>1650421878419</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1650421878419</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,9 +172,10 @@
     <MESSAGE value="Added data template" />
     <MESSAGE value="Add to github" />
     <MESSAGE value="Add real data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add real data" />
+    <MESSAGE value="Task: Add data transformation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task: Add data transformation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650421679125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650424550902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

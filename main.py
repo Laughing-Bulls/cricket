@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from transform_data import transform
+from transform_data import split_data
 from final_model import predict_score
 
 def read_data(name):
@@ -19,17 +20,11 @@ def retrieve_result():
     cricket_input = transform(raw_data)
     print("Main: The cricket inputs matrix: ")
     print(cricket_input.head())  # Print transformed data.
-
+    X_train, X_test, y_train, y_test = split_data(cricket_input)
+    print("y_test")
+    print(y_test)
     """ 
 
-
-    pred = 0
-    input = np.zeros((1, 4))
-    input[0, 0] = cricket_input.iat[0, 0]
-    input[0, 1] = cricket_input.iat[0, 1]
-    input[0, 2] = cricket_input.iat[0, 2]
-    input[0, 3] = cricket_input.iat[0, 3]
-    print("Main: The inputs are: ", input)
     pred = predict_score(input)
     print('Main: The calculated prediction is:', pred)  # Print final answer."""
 

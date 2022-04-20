@@ -5,6 +5,7 @@ import sklearn
 from sklearn.compose import ColumnTransformer
 from sklearn import preprocessing
 from sklearn.preprocessing import Normalizer, OneHotEncoder
+from sklearn.model_selection import train_test_split
 
 def label_transform(df):
     # transform categories (e.g., venues, teams) into categorical integers
@@ -18,8 +19,7 @@ def label_transform(df):
     #enc.fit(encoded)
     #transformed = enc.transform(encoded).toarray()
     # convert each category into its own column with value 0 or 1
-    print('Transform Data: The shape of the transformed array is:')
-    print(coded.shape)
+    print('Transform Data: The shape of the transformed array is:', coded.shape)
     return coded
 
 def transform(df):
@@ -32,7 +32,14 @@ def transform(df):
     #df = df.select_dtypes(include=[object])  # isolate categorical data
     transformed = label_transform(df) # function returns transformed array
     print(transformed.head())
+    #print('Transform Data: The transformed data size is:')
+    #print(transformed.shape)
+    return transformed
 
-    print('Transform Data: The transformed data size is:')
-    print(df.shape)
-    return df
+def split_data(df):
+    y = df["total"]
+    X = df.drop(labels="total", axis=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.20, random_state=42)
+    print("Data successfully split.")
+    print("X_train:", X_train.shape, "X_test", X_test.shape, "y_train", y_train.shape, "y_test", y_test.shape)
+    return X_train, X_test, y_train, y_test
