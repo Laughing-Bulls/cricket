@@ -15,9 +15,10 @@ def retrieve_result():
     raw_data = read_data("cricket-raw-data.csv")
     print("Main: Raw data: ")
     print(raw_data.head())
+    print(raw_data.shape)
     cricket_input = transform(raw_data)
     print("Main: The cricket inputs matrix: ")
-    print(cricket_input.head())
+    print(cricket_input.head())  # Print transformed data.
 
     """ 
 
