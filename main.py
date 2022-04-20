@@ -4,6 +4,7 @@ import pandas as pd
 
 from transform_data import transform
 from transform_data import split_data
+from ml_models import construct_model
 from final_model import predict_score
 
 def read_data(name):
@@ -11,7 +12,7 @@ def read_data(name):
     df = pd.read_csv(path + name, header=0)
     return df
 
-def retrieve_result():
+def prepare_input():
     # Returns the answer.
     raw_data = read_data("cricket-raw-data.csv")
     print("Main: Raw data: ")
@@ -20,9 +21,8 @@ def retrieve_result():
     cricket_input = transform(raw_data)
     print("Main: The cricket inputs matrix: ")
     print(cricket_input.head())  # Print transformed data.
-    X_train, X_test, y_train, y_test = split_data(cricket_input)
-    print("y_test")
-    print(y_test)
+    return cricket_input
+
     """ 
 
     pred = predict_score(input)
@@ -31,5 +31,6 @@ def retrieve_result():
 
 # Runs the script.
 if __name__ == '__main__':
-    retrieve_result()
+    input = prepare_input()
+    construct_model(input)
 
