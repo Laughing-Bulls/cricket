@@ -1,11 +1,12 @@
 # This program takes the raw data as a dataframe and returns the pre-processed inputs.
 import numpy as np
 import pandas as pd
-import sklearn
-from sklearn.compose import ColumnTransformer
-from sklearn import preprocessing
-from sklearn.preprocessing import Normalizer, OneHotEncoder
+#import sklearn
+#from sklearn.compose import ColumnTransformer
+#from sklearn import preprocessing
+#from sklearn.preprocessing import Normalizer, OneHotEncoder
 from sklearn.model_selection import train_test_split
+
 
 def label_transform(df):
     # transform categories (e.g., venues, teams) into categorical integers
@@ -22,19 +23,21 @@ def label_transform(df):
     print('Transform Data: The shape of the transformed array is:', coded.shape)
     return coded
 
+
 def transform(df):
     # Transforms the raw data.
     print('Transform Data: The raw data headers are:')
     print(df.columns)
-    df.drop(index=df.index[1:340000], inplace=True)  # Make data set smaller for testing
+    df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
     df.drop(labels='date', axis=1, inplace=True)  # Remove date column
     df = df[df['overs'] >= 5.0]  # Remove pitches during first 5 overs
     #df = df.select_dtypes(include=[object])  # isolate categorical data
-    transformed = label_transform(df) # function returns transformed array
+    transformed = label_transform(df)  # function returns transformed array
     print(transformed.head())
     #print('Transform Data: The transformed data size is:')
     #print(transformed.shape)
     return transformed
+
 
 def split_data(df):
     y = df["total"]
