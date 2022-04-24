@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 #import sklearn
 from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import SGDRegressor
@@ -24,6 +25,9 @@ def construct_model(input_data, model_name):
     X_train, X_test, y_train, y_test = split_data(input_data)
     #print("ML_Models: y_test")
     #print(y_test)
+    if model_name == "Support Vector Classifier":
+        model = SVC(C=100, kernel='rbf')
+        # alternative => SVC(C=100, kernel='poly', degree=3)
     if model_name == "Lasso Regression":
         model = Lasso(alpha=1.0)
     if model_name == "Stochastic Gradient Descent":
@@ -36,7 +40,7 @@ def construct_model(input_data, model_name):
     model.fit(X_train, y_train)
     print("ML_Models: ", model_name, " model built.")
     print(model.get_params())
-    model.predict(X_test)
+    y_pred = model.predict(X_test)
     print(model_name, ": R-squared accuracy: ", model.score(X_test, y_test))
     analyze_model(model)
     return

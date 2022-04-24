@@ -29,15 +29,17 @@ def prepare_input():
 
 
 def user_input():
-    choice = input("Select a model number (1,2,3,4): ")  # user can choose ML model
+    choice = input("Select a model number (1,2,3,4,5): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
-        model_name = "Lasso Regression"
+        model_name = "Support Vector Classifier"
     if choice == '2':
-        model_name = "Stochastic Gradient Descent"
+        model_name = "Lasso Regression"
     if choice == '3':
-        model_name = "Baysian Ridge Regression"
+        model_name = "Stochastic Gradient Descent"
     if choice == '4':
+        model_name = "Baysian Ridge Regression"
+    if choice == '5':
         model_name = "Ridge Regression"
     print("You chose: ", choice, model_name)
     return model_name
