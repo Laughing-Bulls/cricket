@@ -3,10 +3,14 @@ import numpy as np
 import pandas as pd
 #import sklearn
 from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import SGDRegressor
 from sklearn.linear_model import BayesianRidge
+from sklearn.metrics import accuracy_score
 
 
 def split_data(df):
@@ -22,8 +26,18 @@ def split_data(df):
 def construct_model(input_data, model_name):
     # call split data function and run through ML model
     X_train, X_test, y_train, y_test = split_data(input_data)
-    #print("ML_Models: y_test")
-    #print(y_test)
+
+    nonlinear = False
+    if model_name == "Gaussian Naive Bayes":
+        model = GaussianNB()
+        nonlinear = True
+    if model_name == "Support Vector Classifier":
+        model = SVC(C=100, kernel='rbf')
+        # alternative => SVC(C=100, kernel='poly', degree=3)
+        nonlinear = True
+    if model_name == "Random Forest":
+        model = RandomForestClassifier(max_depth=10, random_state=0)
+        nonlinear = True
     if model_name == "Lasso Regression":
         model = Lasso(alpha=1.0)
     if model_name == "Stochastic Gradient Descent":
@@ -36,11 +50,14 @@ def construct_model(input_data, model_name):
     model.fit(X_train, y_train)
     print("ML_Models: ", model_name, " model built.")
     print(model.get_params())
-    model.predict(X_test)
-    print(model_name, ": R-squared accuracy: ", model.score(X_test, y_test))
-    analyze_model(model)
+    y_pred = model.predict(X_test)
+    if nonlinear:
+        analyze_model(y_test, y_pred)
+    else:
+        print(model_name, ": R-squared accuracy: ", model.score(X_test, y_test))
     return
 
 
-def analyze_model(model):
+def analyze_model(y_test, y_pred):
+    print("Prediction Accuracy: %1.3f" %accuracy_score(y_test, y_pred))
     return
