@@ -5,11 +5,51 @@ import pandas as pd
 #from sklearn.compose import ColumnTransformer
 #from sklearn import preprocessing
 #from sklearn.preprocessing import Normalizer, OneHotEncoder
-from sklearn.model_selection import train_test_split
 
 
-def label_transform(df):
+def read_data():
+    path = './data/'
+    name = 'cricket-raw-data.csv'
+    df = pd.read_csv(path + name, header=0)
+    return df
+
+
+def write_data(df):
+    path = './data/'
+    name = 'cricket-processed-data.csv'
+    df.to_csv(path + name)
+    return True
+
+
+def prepare_input():
+    # Calls functions to read, process and transform raw data, and save it as csv
+    raw_data = read_data()
+    print("transform_data: Raw data: ")
+    print(raw_data.head())  # Print raw data
+    print(raw_data.shape)
+    cricket_input = transform(raw_data)
+    print("transform_data: The processed cricket inputs matrix: ")
+    print(cricket_input.columns)
+    print(cricket_input.head())  # Print transformed data
+    print(raw_data.shape)
+    write_data(cricket_input)
+    return True
+
+
+def transform(df):
+    # Transforms the raw data.
+    print('transform_data: The raw data headers are:')
+    print(df.columns)
+    df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
+    df.drop(labels='date', axis=1, inplace=True)  # Remove date column
+    df = df[df['overs'] >= 5.0]  # Remove pitches during first 5 overs
+    transformed = label_code(df)  # function returns transformed array
+    return transformed
+
+
+def label_code(df):
     # transform categories (e.g., venues, teams) into categorical integers
+    # convert each category into its own column with value 0 or 1
     coded = pd.get_dummies(data=df, columns=['venue', 'bat_team', 'bowl_team'])
     #ct = ColumnTransformer([('encode', OneHotEncoder(categories='auto'))], remainder='passthrough') # column transformation
     #transformed = np.array(ct.fit_transform(df), dtype=np.str)
@@ -19,30 +59,5 @@ def label_transform(df):
     #enc = preprocessing.OneHotEncoder()
     #enc.fit(encoded)
     #transformed = enc.transform(encoded).toarray()
-    # convert each category into its own column with value 0 or 1
-    print('Transform Data: The shape of the transformed array is:', coded.shape)
+    print('transform_data: The shape of the transformed array is:', coded.shape)
     return coded
-
-
-def transform(df):
-    # Transforms the raw data.
-    print('Transform Data: The raw data headers are:')
-    print(df.columns)
-    df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
-    df.drop(labels='date', axis=1, inplace=True)  # Remove date column
-    df = df[df['overs'] >= 5.0]  # Remove pitches during first 5 overs
-    #df = df.select_dtypes(include=[object])  # isolate categorical data
-    transformed = label_transform(df)  # function returns transformed array
-    print(transformed.head())
-    #print('Transform Data: The transformed data size is:')
-    #print(transformed.shape)
-    return transformed
-
-
-def split_data(df):
-    y = df["total"]
-    X = df.drop(labels="total", axis=1)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.20, random_state=42)
-    print("Data successfully split.")
-    print("X_train:", X_train.shape, "X_test", X_test.shape, "y_train", y_train.shape, "y_test", y_test.shape)
-    return X_train, X_test, y_train, y_test

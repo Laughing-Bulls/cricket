@@ -1,34 +1,12 @@
 # This is the MAIN Python script. It provides the user interface to run subroutines.
 import numpy as np
 import pandas as pd
-
-from transform_data import transform
-#from transform_data import split_data
+import pickle
+from transform_data import prepare_input
 from ml_models import construct_model
-#from final_model import predict_score
 
 
-def read_data():
-    path = './data/'
-    name = "cricket-raw-data.csv"
-    df = pd.read_csv(path + name, header=0)
-    return df
-
-
-def prepare_input():
-    # Returns the answer.
-    raw_data = read_data()
-    print("Main: Raw data: ")
-    print(raw_data.head())
-    print(raw_data.shape)
-    cricket_input = transform(raw_data)
-    print("Main: The cricket inputs matrix: ")
-    print(cricket_input.columns)
-    print(cricket_input.head())  # Print transformed data.
-    return cricket_input
-
-
-def user_input():
+def model_choice():
     choice = input("Select a model number (1,2,3,4,5,6,7,8,9,10,11): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
@@ -57,13 +35,36 @@ def user_input():
     return model_name
 
 
+def runtest():
+    filename = "final_model.sav"
+    saved_model = pickle.load(open(filename, 'rb'))
+    X = []
+    X = [1 for i in range(108)]
+    #result = X
+    result = saved_model.predict(X)
+    print("The predicted score is: ", result)
+    return True
+
+
 # Runs the script.
 if __name__ == '__main__':
-    input_data = prepare_input()  # load and prepare input data
-    choice = user_input()
-    while choice != 'quit':
-        model = construct_model(input_data, choice)  # run and evaluate selected model
-        choice = user_input()
+    input_choice = input("Do you want to transform a new dataset? (y/n)")  # process raw data or not?
+    if input_choice == "y":
+        prepare_input()  # load and prepare raw data
+    training_choice = input("Do you want to train a new model? (y/n)")  # process raw data or not?
+    if training_choice == "y":
+        choice = model_choice()
+        while choice != 'quit':
+            model = construct_model(choice)  # run and evaluate selected model
+            choice = model_choice()
+    output_choice = input("Do you want to apply the model to data? (y/n)")  # apply the saved model?
+    if output_choice == "y":
+        #print(type(input_data))
+        #print(input_data.head())
+        #print(input_data.loc[[300004]])
+        #print(input_data.iloc[300004]) - dont work
+        runtest()
+
     print("That's all, Folks!")
 
     """ 

@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-#import sklearn
+import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
@@ -20,18 +20,16 @@ from sklearn.metrics import explained_variance_score
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score
 
 
-def split_data(df):
-    # split data into training and test data (80% / 20%)
-    y = df["total"]
-    X = df.drop(labels="total", axis=1)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
-    print("ML_Models: Data successfully split.")
-    print("X_train:", X_train.shape, "X_test", X_test.shape, "y_train", y_train.shape, "y_test", y_test.shape)
-    return X_train, X_test, y_train, y_test
+def read_input_file():
+    path = './data/'
+    name = 'cricket-processed-data.csv'
+    df = pd.read_csv(path + name, index_col=0)
+    return df
 
 
-def construct_model(input_data, model_name):
-    # call split data function and run through ML model
+def construct_model(model_name):
+    # get input file, call split data function, and train model with selected ML algorithm
+    input_data = read_input_file()
     X_train, X_test, y_train, y_test = split_data(input_data)
 
     classification = False
@@ -49,7 +47,7 @@ def construct_model(input_data, model_name):
         model = LinearRegression()
     if model_name == "Lasso Regression":
         model = Lasso(alpha=1.0)
-    if model_name == "Stochastic Gradient Descent": #KEEP
+    if model_name == "Stochastic Gradient Descent":  #KEEP
         model = SGDRegressor(max_iter=1000, tol=1e-3)
     if model_name == "Baysian Ridge Regression":
         model = BayesianRidge()
@@ -67,7 +65,18 @@ def construct_model(input_data, model_name):
     print(model.get_params())
     y_pred = model.predict(X_test)
     analyze_model(classification, y_test, y_pred)
+    save_model(model_name, model)
     return True
+
+
+def split_data(df):
+    # split data into training and test data (80% / 20%)
+    y = df["total"]
+    X = df.drop(labels="total", axis=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
+    print("ML_Models: Data successfully split.")
+    print("X_train:", X_train.shape, "X_test", X_test.shape, "y_train", y_train.shape, "y_test", y_test.shape)
+    return X_train, X_test, y_train, y_test
 
 
 def analyze_model(classification, y_test, y_pred):
@@ -84,7 +93,6 @@ def analyze_model(classification, y_test, y_pred):
         print("Root Mean Squared Error: ", np.sqrt(mean_squared_error(y_test, y_pred)))
         print("Explained Variance Score: ", explained_variance_score(y_test, y_pred))
         runplot(y_test, y_pred)
-
     return True
 
 
@@ -96,4 +104,13 @@ def runplot(y_test, y_pred):
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
     plt.show()
+    return True
+
+
+def save_model(choice, model):
+    filename = "final_model.sav"
+    yes = input("Save this model? (y/n)")
+    if yes == "y":
+        pickle.dump(model, open(filename, 'wb'))
+        print(choice, " : Model has been saved as final_model.sav")
     return True
