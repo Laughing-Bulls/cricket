@@ -13,6 +13,8 @@ from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import SGDRegressor
 from sklearn.linear_model import BayesianRidge
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn import tree
 from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
 from sklearn.metrics import explained_variance_score
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score
@@ -55,6 +57,10 @@ def construct_model(input_data, model_name):
         model = Ridge(alpha=1.0)
     if model_name == "Linear SVR":
         model = LinearSVR()
+    if model_name == "KNN Regression":
+        model = KNeighborsRegressor()
+    if model_name == "Decision Tree":
+        model = tree.DecisionTreeRegressor()
 
     model.fit(X_train, y_train)
     print("ML_Models: ", model_name, " model built.")

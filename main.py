@@ -29,7 +29,7 @@ def prepare_input():
 
 
 def user_input():
-    choice = input("Select a model number (1,2,3,4,5,6,7,8): ")  # user can choose ML model
+    choice = input("Select a model number (1,2,3,4,5,6,7,8,9,10,11): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
         model_name = "Gaussian Naive Bayes"
@@ -49,6 +49,10 @@ def user_input():
         model_name = "Ridge Regression"
     if choice == '9':
         model_name = "Linear SVR"
+    if choice == '10':
+        model_name = "KNN Regression"
+    if choice == '11':
+        model_name = "Decision Tree"
     print("You chose: ", choice, model_name)
     return model_name
 
