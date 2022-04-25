@@ -9,14 +9,14 @@ import pandas as pd
 
 def read_data():
     path = './data/'
-    name = "cricket-raw-data.csv"
+    name = 'cricket-raw-data.csv'
     df = pd.read_csv(path + name, header=0)
     return df
 
 
 def write_data(df):
     path = './data/'
-    name = "cricket-processed-data.csv"
+    name = 'cricket-processed-data.csv'
     df.to_csv(path + name)
     return True
 

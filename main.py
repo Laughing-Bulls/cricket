@@ -6,7 +6,7 @@ from transform_data import prepare_input
 from ml_models import construct_model
 
 
-def user_input():
+def model_choice():
     choice = input("Select a model number (1,2,3,4,5,6,7,8,9,10,11): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
@@ -53,10 +53,10 @@ if __name__ == '__main__':
         prepare_input()  # load and prepare raw data
     training_choice = input("Do you want to train a new model? (y/n)")  # process raw data or not?
     if training_choice == "y":
-        choice = user_input()
+        choice = model_choice()
         while choice != 'quit':
             model = construct_model(choice)  # run and evaluate selected model
-            choice = user_input()
+            choice = model_choice()
     output_choice = input("Do you want to apply the model to data? (y/n)")  # apply the saved model?
     if output_choice == "y":
         #print(type(input_data))
