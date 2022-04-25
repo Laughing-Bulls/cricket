@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import pickle
 #import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
@@ -67,6 +68,7 @@ def construct_model(input_data, model_name):
     print(model.get_params())
     y_pred = model.predict(X_test)
     analyze_model(classification, y_test, y_pred)
+    save_model(model_name, model)
     return True
 
 
@@ -84,7 +86,6 @@ def analyze_model(classification, y_test, y_pred):
         print("Root Mean Squared Error: ", np.sqrt(mean_squared_error(y_test, y_pred)))
         print("Explained Variance Score: ", explained_variance_score(y_test, y_pred))
         runplot(y_test, y_pred)
-
     return True
 
 
@@ -96,4 +97,13 @@ def runplot(y_test, y_pred):
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
     plt.show()
+    return True
+
+
+def save_model(choice, model):
+    filename = "final_model.sav"
+    yes = input("Save this model? (y/n)")
+    if yes == "y":
+        pickle.dump(model, open(filename, 'wb'))
+        print(choice, " : Model has been saved as final_model.sav")
     return True

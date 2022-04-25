@@ -64,6 +64,7 @@ if __name__ == '__main__':
     while choice != 'quit':
         model = construct_model(input_data, choice)  # run and evaluate selected model
         choice = user_input()
+
     print("That's all, Folks!")
 
     """ 
