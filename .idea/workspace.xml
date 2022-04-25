@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add SVM model">
+    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add Naive Bayes and Random Forest models">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_models.py" afterDir="false" />
@@ -93,7 +93,7 @@
       <workItem from="1650237894102" duration="13173000" />
       <workItem from="1650402345159" duration="18546000" />
       <workItem from="1650468418700" duration="4848000" />
-      <workItem from="1650483325456" duration="13297000" />
+      <workItem from="1650483325456" duration="20569000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1650248022167</created>
@@ -179,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650759865683</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Task: Add Naive Bayes and Random Forest models">
+      <created>1650767138714</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1650767138714</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,9 +213,10 @@
     <MESSAGE value="Task: Add ridge regression model" />
     <MESSAGE value="Task: Add other ML models and user selection function" />
     <MESSAGE value="Task: Add SVM model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task: Add SVM model" />
+    <MESSAGE value="Task: Add Naive Bayes and Random Forest models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task: Add Naive Bayes and Random Forest models" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650762505938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650854622373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -29,7 +29,7 @@ def prepare_input():
 
 
 def user_input():
-    choice = input("Select a model number (1,2,3,4,5,6,7): ")  # user can choose ML model
+    choice = input("Select a model number (1,2,3,4,5,6,7,8): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
         model_name = "Gaussian Naive Bayes"
@@ -38,13 +38,17 @@ def user_input():
     if choice == '3':
         model_name = "Random Forest"
     if choice == '4':
-        model_name = "Lasso Regression"
+        model_name = "Linear Regression"
     if choice == '5':
-        model_name = "Stochastic Gradient Descent"
+        model_name = "Lasso Regression"
     if choice == '6':
-        model_name = "Baysian Ridge Regression"
+        model_name = "Stochastic Gradient Descent"
     if choice == '7':
+        model_name = "Baysian Ridge Regression"
+    if choice == '8':
         model_name = "Ridge Regression"
+    if choice == '9':
+        model_name = "Linear SVR"
     print("You chose: ", choice, model_name)
     return model_name
 
