@@ -108,9 +108,10 @@ def runplot(y_test, y_pred):
 
 
 def save_model(choice, model):
+    path = './model/'
     filename = "final_model.sav"
     yes = input("Save this model? (y/n)")
     if yes == "y":
-        pickle.dump(model, open(filename, 'wb'))
+        pickle.dump(model, open(path + filename, 'wb'))
         print(choice, " : Model has been saved as final_model.sav")
     return True

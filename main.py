@@ -1,9 +1,9 @@
 # This is the MAIN Python script. It provides the user interface to run subroutines.
 import numpy as np
 import pandas as pd
-import pickle
 from transform_data import prepare_input
 from ml_models import construct_model
+from apply_model import predict_score
 
 
 def model_choice():
@@ -35,39 +35,23 @@ def model_choice():
     return model_name
 
 
-def runtest():
-    filename = "final_model.sav"
-    saved_model = pickle.load(open(filename, 'rb'))
-    X = []
-    X = [1 for i in range(108)]
-    #result = X
-    result = saved_model.predict(X)
-    print("The predicted score is: ", result)
-    return True
-
-
 # Runs the script.
 if __name__ == '__main__':
+
     input_choice = input("Do you want to transform a new dataset? (y/n)")  # process raw data or not?
     if input_choice == "y":
         prepare_input()  # load and prepare raw data
+
     training_choice = input("Do you want to train a new model? (y/n)")  # process raw data or not?
     if training_choice == "y":
         choice = model_choice()
         while choice != 'quit':
             model = construct_model(choice)  # run and evaluate selected model
             choice = model_choice()
+
     output_choice = input("Do you want to apply the model to data? (y/n)")  # apply the saved model?
     if output_choice == "y":
-        #print(type(input_data))
-        #print(input_data.head())
-        #print(input_data.loc[[300004]])
-        #print(input_data.iloc[300004]) - dont work
-        runtest()
+        predict_score()
 
     print("That's all, Folks!")
 
-    """ 
-    pred = predict_score(input)
-    print('Main: The calculated prediction is:', pred)  # Print final answer.
-    """
