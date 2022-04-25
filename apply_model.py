@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import pickle
+from ml_models import read_input_file
 
 def read_model():
     path = './model/'
@@ -14,30 +15,25 @@ def predict_score():
     model = read_model()
     print("apply_model: The Model parameters are from the currently saved model.")
     print("apply_model: The Model weightings are: ")
-    """ 
+    print(model.coef_)
+
     model_inputs = match_data()
-    print(model_parameters)
-
-    pred = input + var
-    print('apply_model: The model predicts:', pred)  # Print final answer.
-
-        pred = predict_score(input)
-        print('apply_model: The calculated prediction is:', pred)  # Print final answer.
-        """
-    result = 100
     # print(type(input_data))
-    # print(input_data.head())
-    # print(input_data.loc[[300004]])
-    # print(input_data.iloc[300004]) - dont work
-    print("The predicted score is: ", result)
+
+    prediction = model.predict(model_inputs)
+    print("apply_model: The predicted score is: ", prediction)
     return True
 
 
 def match_data():
+    # obtains a sample set of inputs from the processed training data
     print("apply_model: This match data is from the training set.")
+    all = read_input_file()
+    X = all.iloc[[1]]
+    y = X["total"]
+    X = X.drop(labels="total", axis=1)  # remove output column
     print("apply_model: The inputs are: ")
-    X = []
-    X = [1 for i in range(108)]
     print(X)
+    print("apply_model: The actual score was: ", y.values[0])
     return X
 
