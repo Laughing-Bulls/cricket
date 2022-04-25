@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add more regression models">
+    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add function to save final model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model.sav" beforeDir="false" afterPath="$PROJECT_DIR$/final_model.sav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transform_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/transform_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +94,8 @@
       <workItem from="1650237894102" duration="13173000" />
       <workItem from="1650402345159" duration="18546000" />
       <workItem from="1650468418700" duration="4848000" />
-      <workItem from="1650483325456" duration="26671000" />
+      <workItem from="1650483325456" duration="30351000" />
+      <workItem from="1650923027540" duration="2538000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1650248022167</created>
@@ -201,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650856411089</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Task: Add function to save final model">
+      <created>1650905317643</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1650905317643</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,9 +239,10 @@
     <MESSAGE value="Task: Add Naive Bayes and Random Forest models" />
     <MESSAGE value="Task: Add more regression models, evaluation metrics, and actual vs. predicted graph" />
     <MESSAGE value="Task: Add more regression models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task: Add more regression models" />
+    <MESSAGE value="Task: Add function to save final model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task: Add function to save final model" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650904463798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650908771731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
