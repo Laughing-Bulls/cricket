@@ -110,8 +110,12 @@ def runplot(y_test, y_pred):
 def save_model(choice, model):
     path = './model/'
     filename = "final_model.sav"
+    parameter_filename = "parameters.csv"
     yes = input("Save this model? (y/n)")
     if yes == "y":
         pickle.dump(model, open(path + filename, 'wb'))
         print(choice, " : Model has been saved as final_model.sav")
+        weights = model.coef_
+        np.savetxt(path + parameter_filename, weights, delimiter=',')
+        print("Model weights/coefficients have been saved as parameters.csv")
     return True
