@@ -29,7 +29,7 @@ def match_data():
     # obtains a sample set of inputs from the processed training data
     print("apply_model: This match data is from the training set.")
     all = read_input_file()
-    X = all.iloc[[1]]
+    X = all.iloc[[201]]
     y = X["total"]
     X = X.drop(labels="total", axis=1)  # remove output column
     print("apply_model: The inputs are: ")
