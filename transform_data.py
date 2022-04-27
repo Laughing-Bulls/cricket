@@ -9,7 +9,7 @@ import pandas as pd
 
 def read_data():
     path = './data/'
-    name = 'cricket-raw-data.csv'
+    name = 'ipldata.csv'
     df = pd.read_csv(path + name, header=0)
     return df
 
@@ -40,9 +40,19 @@ def transform(df):
     # Transforms the raw data.
     print('transform_data: The raw data headers are:')
     print(df.columns)
-    df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
-    df.drop(labels='date', axis=1, inplace=True)  # Remove date column
-    df = df[df['overs'] >= 5.0]  # Remove pitches during first 5 overs
+    columnsRemoved = ['batsman','non striker', 'bowler', 'extras', 'extra kind', 'wicket kind', 'player out', 'fielders', 
+    'by', 'player of match','match type', 'venue', 'city', 'gender', 'umpire1', 'umpire2']
+    df.drop(columnsRemoved, axis =1, inplace = True)
+    df.drop(columns=df.columns[0], axis = 1, inplace = True)
+    print('Columns Dropped:::')
+    print(df.columns)
+    consistent_teams = ['Kings XI Punjab', 'Royal Challengers Bangalore', 'Sunrisers Hyderabad', 'Chennai Super Kings',
+    'Kolkata Knight Riders', 'Delhi Daredevils', 'Rajasthan Royals', 'Mumbai Indians']
+    df = df[(df['team1'].isin(consistent_teams)) & (df['team2'].isin(consistent_teams))] 
+    print(df.head())
+    #df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
+    #df.drop(labels='date', axis=1, inplace=True)  # Remove date column
+    df = df[df['delivery'] >= 5.0]  # Remove pitches during first 5 overs
     transformed = label_code(df)  # function returns transformed array
     return transformed
 
@@ -50,7 +60,7 @@ def transform(df):
 def label_code(df):
     # transform categories (e.g., venues, teams) into categorical integers
     # convert each category into its own column with value 0 or 1
-    coded = pd.get_dummies(data=df, columns=['venue', 'bat_team', 'bowl_team'])
+    coded = pd.get_dummies(data=df, columns=['team1', 'team2', 'outcome','winner','toss winner', 'toss decision',])
     #ct = ColumnTransformer([('encode', OneHotEncoder(categories='auto'))], remainder='passthrough') # column transformation
     #transformed = np.array(ct.fit_transform(df), dtype=np.str)
     #transformed_df = pd.DataFrame(transformed) # convert back to dataframe
