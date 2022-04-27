@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add an application of the model">
+    <list default="true" id="cbbadfae-9b91-4dbf-a246-98fcdc3155d3" name="Changes" comment="Task: Add parameter saving feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test-data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apply_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/apply_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/final_model.sav" beforeDir="false" afterPath="$PROJECT_DIR$/model/final_model.sav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/parameters.csv" beforeDir="false" afterPath="$PROJECT_DIR$/model/parameters.csv" afterDir="false" />
     </list>
@@ -96,7 +95,7 @@
       <workItem from="1650402345159" duration="18546000" />
       <workItem from="1650468418700" duration="4848000" />
       <workItem from="1650483325456" duration="30351000" />
-      <workItem from="1650923027540" duration="10196000" />
+      <workItem from="1650923027540" duration="14766000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1650248022167</created>
@@ -245,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650930890524</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Task: Add parameter saving feature">
+      <created>1650938500574</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1650938500574</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,9 +286,10 @@
     <MESSAGE value="Task: Change model to read inputs from a file" />
     <MESSAGE value="Task: Build apply_model.py" />
     <MESSAGE value="Task: Add an application of the model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task: Add an application of the model" />
+    <MESSAGE value="Task: Add parameter saving feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task: Add parameter saving feature" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1650937766022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cricket_project$main.coverage" NAME="main Coverage Results" MODIFIED="1651074844935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
