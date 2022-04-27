@@ -10,7 +10,18 @@ from sklearn.model_selection import train_test_split
 
 def label_transform(df):
     # transform categories (e.g., venues, teams) into categorical integers
-    coded = pd.get_dummies(data=df, columns=['venue', 'bat_team', 'bowl_team'])
+    print("label transform")
+    print(df.head())
+    coded = pd.get_dummies(data=df, columns=['team1', 'team2', 'outcome','winner','toss winner', 'toss decision',])
+
+
+
+    #print(df.loc[1, 'batsman'])
+   # df = df.drop(columns = columnsRemoved)
+
+ 
+   # print(df.head())
+    # ENCODE toss winner, toss decision, outcome,
     #ct = ColumnTransformer([('encode', OneHotEncoder(categories='auto'))], remainder='passthrough') # column transformation
     #transformed = np.array(ct.fit_transform(df), dtype=np.str)
     #transformed_df = pd.DataFrame(transformed) # convert back to dataframe
@@ -28,15 +39,26 @@ def transform(df):
     # Transforms the raw data.
     print('Transform Data: The raw data headers are:')
     print(df.columns)
-    df.drop(index=df.index[1:300000], inplace=True)  # Make data set smaller for testing
-    df.drop(labels='date', axis=1, inplace=True)  # Remove date column
-    df = df[df['overs'] >= 5.0]  # Remove pitches during first 5 overs
-    #df = df.select_dtypes(include=[object])  # isolate categorical data
+    columnsRemoved = ['batsman','non striker', 'bowler', 'extras', 'extra kind', 'wicket kind', 'player out', 'fielders', 
+    'by', 'player of match','match type', 'venue', 'city', 'gender', 'umpire1', 'umpire2']
+    df.drop(columnsRemoved, axis =1, inplace = True)
+    consistent_teams = ['Kings XI Punjab', 'Royal Challengers Bangalore', 'Sunrisers Hyderabad', 'Chennai Super Kings',
+    'Kolkata Knight Riders', 'Delhi Daredevils', 'Rajasthan Royals', 'Mumbai Indians']
+
+    df = df[(df['team1'].isin(consistent_teams)) & (df['team2'].isin(consistent_teams)) & (df['winner'].isin(consistent_teams)) 
+    & (df['toss winner'].isin(consistent_teams))] 
+
+
+    print(df.head())
+    df = df[df['delivery'] >= 5.0]  # Remove pitches during first 5 overs
+    df = df.select_dtypes(include=[object])  # isolate categorical data
     transformed = label_transform(df)  # function returns transformed array
-    print(transformed.head())
+    #print(transformed.head())
     #print('Transform Data: The transformed data size is:')
     #print(transformed.shape)
-    return transformed
+    return df
+    #return transformed
+
 
 
 def split_data(df):

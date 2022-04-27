@@ -10,7 +10,7 @@ from ml_models import construct_model
 
 def read_data():
     path = './data/'
-    name = "cricket-raw-data.csv"
+    name = 'ipldata.csv'
     df = pd.read_csv(path + name, header=0)
     return df
 
