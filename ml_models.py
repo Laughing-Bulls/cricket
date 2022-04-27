@@ -22,7 +22,7 @@ from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_sc
 
 def read_input_file():
     path = './data/'
-    name = 'ipldata.csv'
+    name = 'cricket-processed-data.csv'
     df = pd.read_csv(path + name, index_col=0)
     return df
 
