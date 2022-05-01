@@ -7,30 +7,28 @@ from apply_model import predict_score
 
 
 def model_choice():
-    choice = input("Select a model number (1,2,3,4,5,6,7,8,9,10,11): ")  # user can choose ML model
+    choice = input("Select a model number (1,2,3,4,5,6,7,8,9,10): ")  # user can choose ML model
     model_name = "quit"
     if choice == '1':
-        model_name = "Gaussian Naive Bayes"
-    if choice == '2':
-        model_name = "Support Vector Classifier"
-    if choice == '3':
-        model_name = "Random Forest"
-    if choice == '4':
         model_name = "Linear Regression"
-    if choice == '5':
+    if choice == '2':
         model_name = "Lasso Regression"
-    if choice == '6':
+    if choice == '3':
         model_name = "Stochastic Gradient Descent"
-    if choice == '7':
+    if choice == '4':
         model_name = "Baysian Ridge Regression"
-    if choice == '8':
+    if choice == '5':
         model_name = "Ridge Regression"
-    if choice == '9':
+    if choice == '6':
         model_name = "Linear SVR"
-    if choice == '10':
+    if choice == '7':
         model_name = "KNN Regression"
-    if choice == '11':
-        model_name = "Decision Tree"
+    if choice == '8':
+        model_name = "Decision Tree Regression"
+    if choice == '9':
+        model_name = "Random Forest Regression"
+    if choice == '10':
+        model_name = "Gradient Boosting Regression"
     print("You chose: ", choice, model_name)
     return model_name
 
